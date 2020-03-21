@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import { Card, Statistic, Button } from 'semantic-ui-react';
 
+interface CounterObj {
+  count: number;
+}
+
 const Conter = () => {
-  const [count, setCount] = useState(0);
+  const [counter, setCounter] = useState<CounterObj>({ count: 0 });
 
   const increment = () => {
-    setCount(prev => prev + 1);
+    setCounter(prev => {
+      return { count: prev.count + 1 };
+    });
   };
 
   const decrement = () => {
-    setCount(prev => prev - 1);
+    setCounter(prev => {
+      return { count: prev.count - 1 };
+    });
   };
 
   return (
@@ -20,7 +28,7 @@ const Conter = () => {
       <Card>
         <Statistic classname="number-board">
           <Statistic.Label>count</Statistic.Label>
-          <Statistic.Value>{count}</Statistic.Value>
+          <Statistic.Value>{counter.count}</Statistic.Value>
         </Statistic>
         <Card.Content>
           <div className="ui two buttons">
