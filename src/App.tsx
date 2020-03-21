@@ -1,6 +1,7 @@
 import React from 'react';
 import 'App.css';
 import CharacterList, { Character } from 'CharacterList';
+import Counter from 'Counter';
 
 const App = () => {
   const characters: Character[] = [
@@ -24,12 +25,15 @@ const App = () => {
   ];
 
   return (
-    <div className="container">
-      <header>
-        <h1>はねバド！ キャラクター一覧</h1>
-      </header>
-      <CharacterList school="北小町高校" characters={characters} />
-    </div>
+    <>
+      <div className="container">
+        <header>
+          <h1>はねバド！ キャラクター一覧</h1>
+        </header>
+        <CharacterList school="北小町高校" characters={characters} />
+      </div>
+      <Counter />
+    </>
   );
 };
 
