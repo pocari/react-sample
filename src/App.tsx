@@ -8,7 +8,7 @@ const App = () => {
       id: 1,
       name: '羽咲 綾乃',
       age: 16,
-      height: 151,
+      height: 152,
     },
     {
       id: 2,
