@@ -2,6 +2,7 @@ import React from 'react';
 import 'App.css';
 import CharacterList, { Character } from 'CharacterList';
 import Counter from 'Counter';
+import Timer from 'Timer';
 
 const App = () => {
   const characters: Character[] = [
@@ -33,6 +34,7 @@ const App = () => {
         <CharacterList school="北小町高校" characters={characters} />
       </div>
       <Counter />
+      <Timer />
     </>
   );
 };
