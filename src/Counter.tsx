@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent } from 'react';
+import React, { useState, SyntheticEvent, useCallback } from 'react';
 import { Card, Statistic, Button } from 'semantic-ui-react';
 
 interface CounterObj {
@@ -8,19 +8,19 @@ interface CounterObj {
 const Conter = () => {
   const [counter, setCounter] = useState<CounterObj>({ count: 0 });
 
-  const increment = (e: SyntheticEvent) => {
+  const increment = useCallback((e: SyntheticEvent) => {
     e.preventDefault();
     setCounter(prev => ({
       count: prev.count + 1,
     }));
-  };
+  }, []);
 
-  const decrement = (e: SyntheticEvent) => {
+  const decrement = useCallback((e: SyntheticEvent) => {
     e.preventDefault();
     setCounter(prev => ({
       count: prev.count - 1,
     }));
-  };
+  }, []);
 
   return (
     <div className="container">
@@ -28,7 +28,7 @@ const Conter = () => {
         <h1>カウンター</h1>
       </header>
       <Card>
-        <Statistic classname="number-board">
+        <Statistic className="number-board">
           <Statistic.Label>count</Statistic.Label>
           <Statistic.Value>{counter.count}</Statistic.Value>
         </Statistic>
