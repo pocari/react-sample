@@ -5,7 +5,7 @@ import Home from 'components/Home/index';
 import Characters from 'components/Characters/index';
 
 const App: React.FC<{}> = () => (
-  <div className="container">
+  <div className="ui container">
     <Switch>
       <Route path="/characters/:code" component={Characters} />
       <Route path="/" component={Home} />
