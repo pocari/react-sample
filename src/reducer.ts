@@ -32,7 +32,7 @@ const counterReducer: Reducer<CounterState, CounterAction> = (
     default:
       // _ はnever になる
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const _ = action.type;
+      const _ = action;
       return state;
   }
 }
