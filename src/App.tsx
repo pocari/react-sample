@@ -1,21 +1,16 @@
 import React from 'react';
-import logo from 'logo.svg';
 import 'App.css';
+import { Redirect, Route, Switch } from 'react-router';
+import Home from 'components/Home/index';
+import Characters from 'components/Characters/index';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello, world</p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
+const App: React.FC<{}> = () => (
+  <div className="ui container">
+    <Switch>
+      <Route path="/characters/:code" component={Characters} />
+      <Route path="/" component={Home} />
+      <Redirect to="/" />
+    </Switch>
   </div>
 );
 
