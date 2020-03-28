@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Card, Image, Button, Icon, Divider } from 'semantic-ui-react';
+import { Card, Image, Button, Icon, Divider, Header } from 'semantic-ui-react';
 import _ from 'lodash';
 import Helmet from 'react-helmet';
 import { User } from 'services/github/models';
@@ -30,23 +30,26 @@ const Members: FC<MembersProps> = ({
         {isLoading ? (
           <Spinner />
         ) : (
-          <Card.Group>
-            {users.map(user => (
-              <Card
-                key={user.id}
-                href={`https://github.com/${user.login}`}
-                target="_blank"
-              >
-                <Card.Content>
-                  <Image floated="right" size="mini" src={user.avatar_url} />
-                  <Card.Header data-test="card-header">
-                    {user.login}
-                  </Card.Header>
-                  <Card.Meta>Github ID: {user.id}</Card.Meta>
-                </Card.Content>
-              </Card>
-            ))}
-          </Card.Group>
+          <>
+            <Header>{title}</Header>
+            <Card.Group>
+              {users.map(user => (
+                <Card
+                  key={user.id}
+                  href={`https://github.com/${user.login}`}
+                  target="_blank"
+                >
+                  <Card.Content>
+                    <Image floated="right" size="mini" src={user.avatar_url} />
+                    <Card.Header data-test="card-header">
+                      {user.login}
+                    </Card.Header>
+                    <Card.Meta>Github ID: {user.id}</Card.Meta>
+                  </Card.Content>
+                </Card>
+              ))}
+            </Card.Group>
+          </>
         )}
 
       <Divider hidden />
