@@ -11,7 +11,7 @@ const DEFAULT_API_CONFIG: ApiConfig = {
   timeout: 7000,
 }
 
-export const getMembersFactory = (optionConfig?: ApiConfig) => {
+export const getMembersFactory = (optionConfig?: ApiConfig): (organizationName: string) => Promise<User[]> => {
   const config = {
     ...DEFAULT_API_CONFIG,
     ...optionConfig,
@@ -19,7 +19,7 @@ export const getMembersFactory = (optionConfig?: ApiConfig) => {
 
   const instance = axios.create(config);
 
-  const getMembers = async (organizationName: string) => {
+  const getMembers = async (organizationName: string): Promise<User[]> => {
     try {
       const response = await instance.get(`/orgs/${organizationName}/members`)
       if (response.status !== 200) {

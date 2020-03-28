@@ -3,8 +3,8 @@ import { Card, Image, Button, Icon, Divider } from 'semantic-ui-react';
 import _ from 'lodash';
 import Helmet from 'react-helmet';
 import { User } from 'services/github/models';
-import Spinner from 'components/Spiner/index';
 import { useHistory } from 'react-router';
+import Spinner from './Spiner';
 
 export interface MembersProps {
   companyName: string;
