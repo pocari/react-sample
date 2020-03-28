@@ -1,5 +1,5 @@
-import { Reducer } from 'redux'
-import {CounterAction, CounterActionType} from 'actions/counter'
+import { Reducer } from 'redux';
+import { CounterAction, CounterActionType } from 'actions/counter';
 
 export interface CounterState {
   count: number;
@@ -7,7 +7,7 @@ export interface CounterState {
 
 export const initialState: CounterState = {
   count: 0,
-}
+};
 
 const counterReducer: Reducer<CounterState, CounterAction> = (
   state: CounterState = initialState,
@@ -33,8 +33,9 @@ const counterReducer: Reducer<CounterState, CounterAction> = (
       // _ はnever になる
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const _ = action;
+
       return state;
   }
-}
+};
 
-export default counterReducer
+export default counterReducer;

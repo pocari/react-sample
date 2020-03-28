@@ -4,7 +4,6 @@ import { RootState } from 'store/index'
 import {add, decrement, increment} from 'actions/counter'
 import CounterComponent, {CounterProps} from 'components/Counter'
 
-
 const Counter: FC<{}> = () => {
   const dispatch = useDispatch();
   const props: CounterProps = {

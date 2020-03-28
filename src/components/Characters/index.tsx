@@ -3,17 +3,23 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { parse } from 'query-string';
 import { characterData } from 'characterData';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router';
 import CharacterList from 'CharacterList';
 import { Divider, Button, Icon } from 'semantic-ui-react';
+import Spinner from 'components/Spiner';
 
-type CharacterProps = {} & RouteComponentProps<{ code: string }>;
+interface ParamTypes {
+  code: string;
+}
 
-const Character: React.FC<CharacterProps> = ({ history, location, match }) => {
+const Character: React.FC<{}> = () => {
+  const history = useHistory()
+  const location = useLocation()
+  const { code } = useParams<ParamTypes>()
+
   const codes = Object.keys(characterData);
-  const targetCode = match.params.code;
+  const targetCode = code;
   const isLoading = parse(location.search).loading === 'true';
-
   return codes.includes(targetCode) ? (
     <>
       <Helmet>
@@ -23,7 +29,7 @@ const Character: React.FC<CharacterProps> = ({ history, location, match }) => {
         <h1>はねバド！ キャラクター一覧</h1>
       </header>
       {isLoading ? (
-        <div>spinner</div>
+        <Spinner/>
       ) : (
         <CharacterList
           school={characterData[targetCode].school}
@@ -47,4 +53,4 @@ const Character: React.FC<CharacterProps> = ({ history, location, match }) => {
   );
 };
 
-export default withRouter(Character);
+export default Character;
