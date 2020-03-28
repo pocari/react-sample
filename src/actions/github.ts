@@ -34,14 +34,14 @@ export interface GetMembersFail {
   error: boolean;
 }
 
-export const start = (params: GetMembersParams): GetMembersStart => ({
+export const getMembersStart = (params: GetMembersParams): GetMembersStart => ({
   type: GithubActionType.GET_MEMBERS_START,
   payload: {
     params,
   },
 });
 
-export const succeed = (
+export const getMembersSucceed = (
   params: GetMembersParams,
   result: GetMembersResult,
 ): GetMembersSucced => ({
@@ -52,7 +52,7 @@ export const succeed = (
   },
 });
 
-export const fail = (
+export const getMembersFail = (
   params: GetMembersParams,
   error: AxiosError,
 ): GetMembersFail => ({
@@ -65,6 +65,6 @@ export const fail = (
 });
 
 export type GithubAction =
-  | ReturnType<typeof start>
-  | ReturnType<typeof succeed>
-  | ReturnType<typeof fail>;
+  | ReturnType<typeof getMembersStart>
+  | ReturnType<typeof getMembersSucceed>
+  | ReturnType<typeof getMembersFail>;
