@@ -35,6 +35,9 @@ const Home: FC<{}> = () => (
           <Link to={`/characters/${code}`}>{characterData[code].school}</Link>{' '}
         </List.Item>
       ))}
+      <List.Item as="li" key="xxx">
+          <Link to={'/counter'}>counter</Link>
+      </List.Item>
     </List>
   </>
 );

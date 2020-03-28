@@ -3,6 +3,7 @@ import { Card, Statistic, Button } from 'semantic-ui-react';
 
 interface CounterObj {
   count: number;
+
 }
 
 const Conter = () => {
