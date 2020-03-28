@@ -1,10 +1,17 @@
 import React, { FC } from 'react';
+import _ from 'lodash';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Container, List } from 'semantic-ui-react';
 import { characterData } from 'characterData';
 
 const codes = Object.keys(characterData);
+const orgs: string[] = [
+  'sikmi',
+  'facebook',
+  'kubernetes',
+]
+
 const Home: FC<{}> = () => (
   <>
     <Helmet>
@@ -35,9 +42,14 @@ const Home: FC<{}> = () => (
           <Link to={`/characters/${code}`}>{characterData[code].school}</Link>{' '}
         </List.Item>
       ))}
-      <List.Item as="li" key="xxx">
+      <List.Item as="li">
           <Link to={'/counter'}>counter</Link>
       </List.Item>
+      {orgs.map(org => (
+        <List.Item as="li">
+          <Link to={`/${org}/members`}>Github {_.capitalize(org)} Members</Link>
+        </List.Item>
+      ))}
     </List>
   </>
 );
