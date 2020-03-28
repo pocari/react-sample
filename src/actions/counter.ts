@@ -4,31 +4,34 @@ export enum CounterActionType {
  INCREMENT = 'COUNTER/INCREMENT',
 }
 
-export interface CounterActionADD {
+export interface CounterActionAdd {
   type: typeof CounterActionType.ADD
   amount: number;
 }
 
-export interface CounterActionDECREMENT {
+export interface CounterActionDecrement {
   type: typeof CounterActionType.DECREMENT
 }
 
-export interface CounterActionINCREMENT {
+export interface CounterActionIncrement {
   type: typeof CounterActionType.INCREMENT
 }
 
-export type CounterAction = CounterActionADD | CounterActionDECREMENT | CounterActionINCREMENT
-
-export const add = (amount: number): CounterAction => ({
+export const add = (amount: number): CounterActionAdd => ({
   amount,
   type: CounterActionType.ADD
 })
 
-export const decrement = (): CounterAction => ({
+export const decrement = (): CounterActionDecrement => ({
   type: CounterActionType.DECREMENT
 })
 
-export const increment = (): CounterAction => ({
+export const increment = (): CounterActionIncrement => ({
   type: CounterActionType.INCREMENT
 })
+
+export type CounterAction =
+    ReturnType<typeof add>
+  | ReturnType<typeof decrement>
+  | ReturnType<typeof increment>
 
