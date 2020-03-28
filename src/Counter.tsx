@@ -1,11 +1,6 @@
 import React, { useState, SyntheticEvent, useCallback } from 'react';
 import { Card, Statistic, Button } from 'semantic-ui-react';
 
-enum Foo {
-  Bar = 'one',
-
-}
-
 interface CounterObj {
   count: number;
 
