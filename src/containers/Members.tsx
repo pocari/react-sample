@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import MembersComponent from 'components/Members';
@@ -14,15 +14,21 @@ const Members: FC<{}> = () => {
   const dispatch = useDispatch();
   const githubState = useSelector((state: RootState) => state.github );
 
+  const loadMembers = useCallback(
+    () => dispatch(getMembersStart({ companyName })),
+    [companyName, dispatch]
+  );
+
   useEffect(() => {
-    dispatch(getMembersStart({ companyName }));
-  }, [dispatch, companyName]);
+    loadMembers()
+  }, [loadMembers]);
 
   return (
     <MembersComponent
       companyName={companyName}
       users={githubState.users}
       isLoading={githubState.isLoading}
+      loadMembers={loadMembers}
     />
   );
 };
