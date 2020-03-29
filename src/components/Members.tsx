@@ -10,12 +10,14 @@ export interface MembersProps {
   companyName: string;
   users: User[];
   isLoading?: boolean;
+  loadMembers: () => void;
 }
 
 const Members: FC<MembersProps> = ({
   companyName = '<会社名>',
   users = [],
   isLoading = false,
+  loadMembers = () => {}
 }) => {
   const history = useHistory()
 
@@ -51,7 +53,6 @@ const Members: FC<MembersProps> = ({
             </Card.Group>
           </>
         )}
-
       <Divider hidden />
       <Button
         basic
@@ -62,6 +63,16 @@ const Members: FC<MembersProps> = ({
       >
         <Icon name="home" />
         ホームへ
+      </Button>
+      <Button
+        basic
+        color="grey"
+        onClick={async () => {
+          loadMembers()
+        }}
+      >
+        <Icon name="sync alternate" />
+        リロード
       </Button>
     </>
   );
